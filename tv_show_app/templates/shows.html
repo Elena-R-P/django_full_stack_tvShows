@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ clock.super }} - Shows
+{% endblock title %}
+
+
+{% block content %}
+<h1 class="mt-3">All Shows</h1>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Network</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for show in shows %}
+        <tr>
+            <th scope="row">{{ show.id }}</th>
+            <td>{{ show.show_title }}</td>
+            <td>{{ show.show_network }}</td>
+            <td><a href="shows/details_page/{{ show.id }}">Details</a> | <a href="shows/edit_page/{{ show.id }}">Edit</a> | <a href="shows/delete/{{ show.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/shows/new">Add a New Show</a>
+
+{% endblock content %}
